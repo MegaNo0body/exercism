@@ -1,11 +1,8 @@
 import string
 
 def is_pangram(sentence):
-    chars = {}
-    for char in sentence.lower():
-        chars[char] = True
-    for char in string.ascii_lowercase:
-        if not char in chars:
-            return False
-    return True
-            
+    present_chars = {letter: True for letter in sentence.lower()}
+    return all(
+            alphabet_char in present_chars
+            for alphabet_char in string.ascii_lowercase
+            )
